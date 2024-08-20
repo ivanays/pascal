@@ -21,30 +21,32 @@ dag = DAG(
     catchup=False,
 )
 
-def printPascal(n):
+def pascal():
 
-    for line in range(0, n):
+    n = 10
 
-        for i in range(0, line + 1):
-            print(binomialCoeff(line, i),
+    def printPascal(n):
+
+        for line in range(0, n):
+
+            for i in range(0, line + 1):
+                print(binomialCoeff(line, i),
                   " ", end="")
-        print()
+            print()
 
-def binomialCoeff(n, k):
-    res = 1
-    if (k > n - k):
-        k = n - k
-    for i in range(0, k):
-        res = res * (n - i)
-        res = res // (i + 1)
+    def binomialCoeff(n, k):
+        res = 1
+        if (k > n - k):
+            k = n - k
+        for i in range(0, k):
+            res = res * (n - i)
+            res = res // (i + 1)
 
-    return res
-
-n = 10
+        return res
 
 pascal = PythonOperator(
     task_id='print_pascal',
-    python_callable=printPascal(n),
+    python_callable=pascal,
     dag=dag,
 )
 
