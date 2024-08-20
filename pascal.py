@@ -41,8 +41,9 @@ def pascal():
         for i in range(0, k):
             res = res * (n - i)
             res = res // (i + 1)
-
         return res
+
+    return printPascal(n)
 
 pascal = PythonOperator(
     task_id='print_pascal',
